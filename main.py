@@ -9,6 +9,7 @@ import requests
 def getweather():
     try:
         city = textfield.get()
+        api_key = "ENTER YOUR API KEY"
 
         geolocator = Nominatim(user_agent="geoapiExercises")
         location = geolocator.geocode(city)
@@ -23,7 +24,7 @@ def getweather():
         name.config(text="CURRENT WEATHER")
 
         #weather
-        api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid=229ddb6d078654ebe324c264f8689647"
+        api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
         response = requests.get(api).json()
         condition = response['weather'][0]['main']
         description = response['weather'][0]['description']
